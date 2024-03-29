@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +12,7 @@ class Authenticate
     {
         if (!auth()->check()) {
             // User is not authenticated, redirect to the login page
-            return redirect()->route('login')->with('error', 'Please log in to access this page.');
+            return redirect()->route('startLogin')->with('error', 'Please log in to access this page.');
         }
 
         // User is authenticated, allow the request to proceed
