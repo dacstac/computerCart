@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 
 <body class="antialiased">
@@ -24,20 +23,34 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <div class="row w-100">
-                    <div class="col-2">
-                        <h1>ComputerCart</h1>
-                    </div>
-                    <div class="col-2 pt-3">
-                        @if (auth()->user())
-                            Welcome {{ auth()->user()->username }}
-                        @else
-                            You are not logged
-                        @endif
+                    <div class="col-4">
+                        <h1><a href="{{ route('home') }}" class="text-decoration-none fw-bold">ComputerCart</a></h1>
                     </div>
                     <div class="col-2 pt-2">
-                        <button type="button" class="btn"><a class="link" href="{{ route('startLogin') }}"><i
-                                    class="bi bi-person-circle"></i> My
-                                Count</a></button>
+                        @if (auth()->user())
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    {{ auth()->user()->username }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @if (auth()->user()->type == 0)
+                                        <li><a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
+                                        </li>
+                                    @endif
+                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                    {{-- <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li> --}}
+                                </ul>
+                            </div>
+                        @else
+                            <button type="button" class="btn"><a class="link" href="{{ route('startLogin') }}">
+                                    <i class="bi bi-person-circle"></i>My Count</a></button>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -45,5 +58,6 @@
         <hr>
     </nav>
 </body>
+@yield('content')
 
 </html>

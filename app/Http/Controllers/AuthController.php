@@ -69,12 +69,14 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function profile()
+    public function logout()
     {
-        if (Auth::check()) {
-            return view('profile/profile');
-        }
+        Auth::logout();
+        return redirect()->route('home');
+    }
 
-        return redirect("/")->withSuccess('No tienes acceso, por favor inicia sesión');
+    public function admin()
+    {
+        return redirect()->route('home');
     }
 }
