@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\Auth;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -23,10 +25,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('updatedataUser');
 });
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AuthController::class, 'admin'])->name('admin');
+Route::middleware(['admin'])->group(function () {
+    Route::get('/create-users', [UserController::class, 'create'])->name('createUsers');
+    Route::post('/create-users/store', [UserController::class, 'store'])->name('storeUsers');
+    Route::get('/show-users', [UserController::class, 'show'])->name('showUsers');
+    Route::post('/show-users/delete/{id}', [UserController::class, 'destroy'])->name('delete');
+    Route::get('/datatable/getUsers', [DatatableController::class, 'getUsers'])->name('getUsers');
 });
 Route::get('/login', [AuthController::class, 'index'])->name('startLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login/recognize', [AuthController::class, 'login'])->name('login');
-Route::post('/login/createAccount', [AuthController::class, 'createAccount'])->name('createAccount');
+Route::post('/login/createAccount', [ProfileController::class, 'createAccount'])->name('createAccount');
