@@ -7,15 +7,19 @@
 
     <title>ComputerCart</title>
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
 </head>
 
 <body class="antialiased">
@@ -35,7 +39,9 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     @if (auth()->user()->type == 0)
-                                        <li><a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
+                                        <li><a class="dropdown-item" href="{{ route('createUsers') }}">Create Users</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="{{ route('showUsers') }}">Show Users</a>
                                         </li>
                                     @endif
                                     <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
