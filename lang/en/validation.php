@@ -175,11 +175,30 @@ return [
             'unique' => 'The username has already been taken.',
             'between' => 'The username field must be between :min and :max characters.',
             'alpha_num' => 'The username field must only contain letters and numbers.',
-        ],
-        'pass' => [
+        ], 'pass' => [
             'required' => 'The password field is required.',
             'between' => 'The password field must be between :min and :max characters.',
-        ],
+        ], 'address_edit' => [
+            'required' => 'The address field is required.',
+            'max' => [
+                'array' => 'The address field must not have more than :max items.',
+                'file' => 'The address field must not be greater than :max kilobytes.',
+                'numeric' => 'The address field must not be greater than :max.',
+                'string' => 'The address field must not be greater than :max characters.',
+            ],
+        ], 'cp_edit' => [
+            'required' => 'The cp field is required.',
+            'numeric' => 'The cp field must be a number.',
+            'digits' => 'The cp field must be :digits digits.',
+        ], 'city_edit' => [
+            'required' => 'The city field is required.',
+            'regex' => 'The city field format is invalid.',
+        ], 'province_edit' => [
+            'required' => 'The province field is required.',
+            'regex' => 'The province field format is invalid.',
+        ], 'country_edit' => [
+            'required' => 'The country dropdown is required.',
+        ]
     ],
 
     /*

@@ -21,5 +21,6 @@ Artisan::command('inspire', function () {
 Artisan::command('resetAll', function () {
     Artisan::call('migrate:fresh');
     Artisan::call('db:seed', ['--class' => 'UsersSeeder']);
+    Artisan::call('db:seed', ['--class' => 'AddressSeeder']);
     Artisan::call('config:clear');
 })->purpose('Display an inspiring quote');

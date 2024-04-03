@@ -45,6 +45,7 @@
                                         </li>
                                     @endif
                                     <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('address') }}">Address</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                                     {{-- <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     <li>

@@ -43,8 +43,7 @@ $(function () {
                     if (data.id != 1) {
                         return `<button type='button' class='btn btn-link' data-bs-toggle='modal'
                         data-bs-target='#deleteModal' data-id='${data.id}' data-username='${data.username}'>
-                        <i class="bi bi-person-dash"></i>
-                        </button>`;
+                        <i class="bi bi-person-dash"></i></button>`;
                     } else {
                         return null;
                     }
